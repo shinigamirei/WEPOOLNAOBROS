@@ -21,6 +21,7 @@
 #define TRINGLE 1
 
 static unsigned int stripIndices[] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 1 };
+static unsigned int triIndeices[] = { 0, 1, 2 };
 
 static unsigned int buffer[2];
 
@@ -50,7 +51,7 @@ float colors[] =
 	0.0,1.0,1.0
 };
 
-float Tirnglr[] =
+float Tri[] =
 {
 	40.0,40.0,0.0,
 	60.0,40.0,0.0,
@@ -71,11 +72,11 @@ void drawScene(void)
 	glBindVertexArray(vao[ANUS]);
 	glDrawElements(GL_TRIANGLE_STRIP, 10, GL_UNSIGNED_INT, 0);
 
-//	glBindVertexArray(vao[TRINGLE]);
-//	glDrawElements(GL_TRIANGLE_STRIP, 3, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(vao[TRINGLE]);
+	glDrawElements(GL_TRIANGLE_STRIP, 3, GL_UNSIGNED_INT, 0);
 
 	glFlush();
-//	glutSwapBuffers();
+	glutSwapBuffers();
 }
 
 void setup(void)
@@ -98,6 +99,21 @@ void setup(void)
 	glVertexPointer(3, GL_FLOAT, 0, 0);// Specify vertex and color pointers to the start of the respective data.
 	glColorPointer(3, GL_FLOAT, 0, (GLvoid*)(sizeof(Vertexs)));
 	// END bind VAO id vao[ANNULUS].
+
+	// BEGIN bind VAO id vao[trin] to the set of vertex array calls following
+	glBindVertexArray(vao[TRINGLE]);
+	glGenBuffers(2, buffer); // Generate buffer ids
+	glEnableClientState(GL_VERTEX_ARRAY);// Enable two vertex arrays: co-ordinates and color
+	glEnableClientState(GL_COLOR_ARRAY);
+	glBindBuffer(GL_ARRAY_BUFFER, buffer[VERTICES]);// Bind vertex buffer and
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Tri) + sizeof(Tri), NULL, GL_STATIC_DRAW);//reserve space
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(Tri), Tri);// Copy vertex coordinates data into first half of vertex buffer.
+	glBufferSubData(GL_ARRAY_BUFFER, sizeof(Tri), sizeof(tcolors), tcolors);// Copy vertex color data into second half of vertex buffer.
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[INDICES]);// Bind and fill indices buffer.
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(stripIndices), stripIndices, GL_STATIC_DRAW);
+	glVertexPointer(3, GL_FLOAT, 0, 0);// Specify vertex and color pointers to the start of the respective data.
+	glColorPointer(3, GL_FLOAT, 0, (GLvoid*)(sizeof(Tri)));
+	// END bind VAO id vao[tRIN].
 
 }
 
@@ -135,7 +151,7 @@ int main(int argc, char **argv)
 	glutInitContextVersion(4, 2);
 	glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
 
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("Paoul my love");
