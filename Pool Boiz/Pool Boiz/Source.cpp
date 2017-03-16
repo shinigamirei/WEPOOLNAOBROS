@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #  include <GL/glew.h>
 #  include <GL/freeglut.h>
 #  include <GL/glext.h>
@@ -13,14 +14,13 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-using namespace glm;
 
 #define VERTICES 0
 #define INDICES 1
 #define ANUS 0
 #define TRINGLE 1
 
-static unsigned int anusindec[] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 1 };
+static unsigned int stripIndices[] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 1 };
 
 static unsigned int buffer[2];
 
@@ -57,48 +57,47 @@ float Tirnglr[] =
 	60.0,60.0,0.0
 };
 
+float tcolors[] =
+{
+	0.0, 0.0, 0.0,
+	1.0, 0.0, 0.0,
+	0.0, 1.0, 0.0,
+};
+
 void drawScene(void)
 {
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glBindVertexArray(vao[ANUS]);
 	glDrawElements(GL_TRIANGLE_STRIP, 10, GL_UNSIGNED_INT, 0);
 
-	glBindVertexArray(vao[TRINGLE]);
-	glDrawElements(GL_TRIANGLE_STRIP, 10, GL_UNSIGNED_INT, 0);
+//	glBindVertexArray(vao[TRINGLE]);
+//	glDrawElements(GL_TRIANGLE_STRIP, 3, GL_UNSIGNED_INT, 0);
 
-	glutSwapBuffers();
+	glFlush();
+//	glutSwapBuffers();
 }
 
 void setup(void)
 {
 	glClearColor(1.0, 1.0, 1.0, 0.0);
 
-	glGenBuffers(3, buffer); // Generate buffer ids.
-
-							 // Enable two vertex arrays: co-ordinates and color.
-	glEnableClientState(GL_VERTEX_ARRAY);
+	glGenVertexArrays(2, vao);
+	
+	// BEGIN bind VAO id vao[ANNULUS] to the set of vertex array calls following.
+	glBindVertexArray(vao[ANUS]);
+	glGenBuffers(2, buffer); // Generate buffer ids.
+	glEnableClientState(GL_VERTEX_ARRAY);// Enable two vertex arrays: co-ordinates and color.
 	glEnableClientState(GL_COLOR_ARRAY);
-
-	// Bind vertex buffer and reserve space.
-	glBindBuffer(GL_ARRAY_BUFFER, buffer[VERTICES]);
+	glBindBuffer(GL_ARRAY_BUFFER, buffer[VERTICES]);// Bind vertex buffer and reserve space.
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertexs) + sizeof(colors), NULL, GL_STATIC_DRAW);
-
-	// Copy vertex coordinates data into first half of vertex buffer.
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(Vertexs), Vertexs);
-
-	// Copy vertex color data into second half of vertex buffer.
-	glBufferSubData(GL_ARRAY_BUFFER, sizeof(Vertexs), sizeof(colors), colors);
-
-	// Bind and fill indices buffer.
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[INDICES]);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(anusindec), anusindec, GL_STATIC_DRAW);
-
-	// Specify vertex and color pointers to the start of the respective data.
-	glVertexPointer(3, GL_FLOAT, 0, 0);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(Vertexs), Vertexs);// Copy vertex coordinates data into first half of vertex buffer.
+	glBufferSubData(GL_ARRAY_BUFFER, sizeof(Vertexs), sizeof(colors), colors);// Copy vertex color data into second half of vertex buffer.
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[INDICES]);// Bind and fill indices buffer.
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(stripIndices), stripIndices, GL_STATIC_DRAW);	
+	glVertexPointer(3, GL_FLOAT, 0, 0);// Specify vertex and color pointers to the start of the respective data.
 	glColorPointer(3, GL_FLOAT, 0, (GLvoid*)(sizeof(Vertexs)));
+	// END bind VAO id vao[ANNULUS].
 
 }
 
@@ -136,7 +135,7 @@ int main(int argc, char **argv)
 	glutInitContextVersion(4, 2);
 	glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
 
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("Paoul my love");
