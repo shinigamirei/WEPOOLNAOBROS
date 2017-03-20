@@ -1,6 +1,5 @@
-﻿  Ball.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Source.cpp
+﻿  Source.cpp
+c:\users\cookj12\desktop\github\wepoolnaobros\pool boiz\pool boiz\source.cpp(91): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\cookj12\desktop\github\wepoolnaobros\pool boiz\pool boiz\source.cpp(92): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
   Pool Boiz.vcxproj -> C:\Users\cookj12\Desktop\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.exe
   Pool Boiz.vcxproj -> C:\Users\cookj12\Desktop\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.pdb (Partial PDB)
