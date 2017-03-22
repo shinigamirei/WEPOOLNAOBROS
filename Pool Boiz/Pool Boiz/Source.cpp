@@ -32,16 +32,17 @@ static unsigned int vao[2];
 //66*33
 //72*36
 //edge
-float Vertexs[] =
+
+float Vertexs[] = //on eye level atm
 {
-	32.0,14.0,0.0,
-	33.5,83.0,0.0,
-	32.0,86.0,0.0,
-	64.0,83.0,0.0,
-	65.5,86.0,0.0,
-	64.0,17.0,0.0,
-	65.5,14.0,0.0,
-	33.5,17.0,0.0
+	-18.0,0.0,-36.0,
+	-16.5,0.0,-33.0,
+	18.0,0.0,36.0,
+	16.5,0.0,33.0,
+	18.0,0.0,36.0,
+	16.5,0.0,33.0,
+	-18.0,0.0,36.0,
+	-16.5,0.0,33.0
 };
 
 float colors[] =
@@ -58,10 +59,10 @@ float colors[] =
 
 float playAreaVert[] =
 {
-	40.0,40.0,0.0,
-	60.0,40.0,0.0,
-	40.0,60.0,0.0,
-	60.0,60.0,0.0
+	-16.5,-1.0,-33.0,
+	16.5,-1.0,-33.0,
+	-16.5,-1.0,33.0,
+	16.5,-1.0,33.0
 };
 
 float playAreaColour[] =
@@ -82,15 +83,6 @@ void drawScene(void)
 	glBindVertexArray(vao[PLAYAREA]);
 	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
 	 
-	glm::mat4 view;
-	view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f),
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f));
-	 
-	GLfloat radius = 10.0f;
-	GLfloat camX = sin(glutGet(GLUT_ELAPSED_TIME)) * radius;
-	GLfloat camZ = cos(glutGet(GLUT_ELAPSED_TIME)) * radius;
-	view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
 	glFlush();
 	glutSwapBuffers();
 }
@@ -138,7 +130,7 @@ void resize(int w, int h)
 	glViewport(0, 0, w, h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0.0, 100.0, 0.0, 100.0, -1.0, 1.0);
+	gluPerspective(90.0, 1, 0.01, 1000.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
