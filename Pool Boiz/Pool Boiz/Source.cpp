@@ -27,7 +27,7 @@ static unsigned int stripIndices[] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 1 };
 static unsigned int triIndeices[] = { 0, 1, 2 };
 
 static unsigned int buffer[2];
-
+int rot = 0;
 static unsigned int vao[2];
 //66*33
 //72*36
@@ -160,6 +160,9 @@ void GamLEP()
 	GLfloat camZ = cos(glutGet(GLUT_ELAPSED_TIME)) * radius;
 	view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
 	*/
+	rot = rot + 1;
+	std::cout << rot << std::endl;
+	glutPostRedisplay();
 }
 
 int main(int argc, char **argv)
