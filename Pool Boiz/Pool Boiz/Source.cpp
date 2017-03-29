@@ -31,9 +31,17 @@ vertexShaderId,
 fragmentShaderId,
 modelViewMatLoc,
 projMatLoc,
+objectLoc,
+anusColorLoc,
+playColorLoc,
 buffer[2],
 vao[3];
 
+static glm::mat4 modelViewMat = glm::mat4(1.0);
+static glm::mat4 projMat = glm::mat4(1.0);
+static float Xangle = 0.0, Yangle = 0.0, Zangle = 0.0; // Angles to rotate scene.
+
+static int torCounts[4];
 
 //66*33
 //72*36
@@ -71,13 +79,8 @@ float playAreaVert[] =
 	16.5,-1.0,33.0
 };
 
-float playAreaColour[] =
-{
-	0.0,1.0,1.0,
-	1.0,1.0,0.0,
-	0.0,1.0,0.0,
-	0.0,1.0,0.0
-};
+static glm::vec4 playAreaColours = { 0.0,1.0,0.0,1.0 };
+
 float sidesVert[] =
 {
 	-16.5,0.0,-33.0,
@@ -121,12 +124,22 @@ char* readTextFile(char* aTextFile)
 void drawScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
+	
+	// Calculate and update modelview matrix.
+	//this is where we would translate e.g camera
+	modelViewMat = glm::mat4(1.0);
+	modelViewMat = glm::rotate(modelViewMat, Zangle, glm::vec3(0.0, 0.0, 1.0));
+	modelViewMat = glm::rotate(modelViewMat, Yangle, glm::vec3(0.0, 1.0, 0.0));
+	modelViewMat = glm::rotate(modelViewMat, Xangle, glm::vec3(1.0, 0.0, 0.0));
+	glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, value_ptr(modelViewMat));
 
+	glUniform1ui(objectLoc, ANUS); // Update object name.
 	glBindVertexArray(vao[ANUS]);
 	glDrawElements(GL_TRIANGLE_STRIP, 10, GL_UNSIGNED_INT, 0);
 
+	glUniform1ui(objectLoc, PLAYAREA); // Update object name.
 	glBindVertexArray(vao[PLAYAREA]);
-	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
+	glMultiDrawElements(GL_TRIANGLE_STRIP, torCounts, GL_UNSIGNED_INT,0,4);
 
 	glBindVertexArray(vao[SIDES]);
 	glDrawElements(GL_TRIANGLE_STRIP, 10, GL_UNSIGNED_INT, 0);
@@ -156,37 +169,29 @@ void setup(void)
 	glLinkProgram(programId);
 	glUseProgram(programId);
 	///////////////////////////////////////
-	
+
 	glGenVertexArrays(3, vao);
 	
 	// BEGIN bind VAO id vao[ANNULUS] to the set of vertex array calls following.
 	glBindVertexArray(vao[ANUS]);
 	glGenBuffers(2, buffer); // Generate buffer ids.
-	glEnableClientState(GL_VERTEX_ARRAY);// Enable two vertex arrays: co-ordinates and color.
-	glEnableClientState(GL_COLOR_ARRAY);
 	glBindBuffer(GL_ARRAY_BUFFER, buffer[VERTICES]);// Bind vertex buffer and reserve space.
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertexs) + sizeof(colors), NULL, GL_STATIC_DRAW);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(Vertexs), Vertexs);// Copy vertex coordinates data into first half of vertex buffer.
-	glBufferSubData(GL_ARRAY_BUFFER, sizeof(Vertexs), sizeof(colors), colors);// Copy vertex color data into second half of vertex buffer.
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertexs), NULL, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[INDICES]);// Bind and fill indices buffer to tell gpu the order of which to draw
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(stripIndices), stripIndices, GL_STATIC_DRAW);	
-	glVertexPointer(3, GL_FLOAT, 0, 0);// Specify vertex and color pointers to the start of the respective data.
-	glColorPointer(3, GL_FLOAT, 0, (GLvoid*)(sizeof(Vertexs)));
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertexs[0]), 0);// Specify vertex pointers to the start of the respective data.
+	glEnableVertexAttribArray(0);
 	// END bind VAO id vao[ANNULUS].
 
 	// BEGIN bind VAO id vao[trin] to the set of vertex array calls following
 	glBindVertexArray(vao[PLAYAREA]);
 	glGenBuffers(2, buffer); // Generate buffer ids
-	glEnableClientState(GL_VERTEX_ARRAY);// Enable two vertex arrays: co-ordinates and color
-	glEnableClientState(GL_COLOR_ARRAY);
 	glBindBuffer(GL_ARRAY_BUFFER, buffer[VERTICES]);// Bind vertex buffer and
-	glBufferData(GL_ARRAY_BUFFER, sizeof(playAreaVert) + sizeof(playAreaVert), NULL, GL_STATIC_DRAW);//reserve space
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(playAreaVert), playAreaVert);// Copy vertex coordinates data into first half of vertex buffer.
-	glBufferSubData(GL_ARRAY_BUFFER, sizeof(playAreaVert), sizeof(playAreaColour), playAreaColour);// Copy vertex color data into second half of vertex buffer.
+	glBufferData(GL_ARRAY_BUFFER, sizeof(playAreaVert), NULL, GL_STATIC_DRAW);//reserve space
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[INDICES]);// Bind and fill indices buffer.
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(stripIndices), stripIndices, GL_STATIC_DRAW);
-	glVertexPointer(3, GL_FLOAT, 0, 0);// Specify vertex and color pointers to the start of the respective data.
-	glColorPointer(3, GL_FLOAT, 0, (GLvoid*)(sizeof(playAreaVert)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(playAreaVert[0]), 0);
+	glEnableVertexAttribArray(1);
 	// END bind VAO id vao[tRIN].
 
 	// BEGIN bind VAO id vao[sides] to the set of vertex array calls following
@@ -203,6 +208,25 @@ void setup(void)
 	glVertexPointer(3, GL_FLOAT, 0, 0);// Specify vertex and color pointers to the start of the respective data.
 	glColorPointer(3, GL_FLOAT, 0, (GLvoid*)(sizeof(sidesVert)));
 	// END bind VAO id vao[sides].
+
+	// Obtain projection matrix uniform location and set value.
+	projMatLoc = glGetUniformLocation(programId, "projMat");
+	projMat = glm::frustum(-5.0,5.0,-5.0,5.0,1.0,100.0);
+	glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, value_ptr(projMat));
+
+	// Obtain color uniform locations and set values.
+//	anusColorLoc = glGetUniformLocation(programId, "hemColor");
+//	glUniform4fv(hemColorLoc, 1, &hemColors[0]);
+	playColorLoc = glGetUniformLocation(programId, "PlayAreaColour");
+	glUniform4fv(playColorLoc, 1, &playAreaColours[0]);
+
+	// Obtain modelview matrix uniform and object uniform locations.
+	modelViewMatLoc = glGetUniformLocation(programId, "modelViewMat");
+	objectLoc = glGetUniformLocation(programId, "object");
+
+
+
+
 }
 
 void resize(int w, int h)
@@ -221,6 +245,36 @@ void keyInput(unsigned char key, int x, int y)
 	{
 	case 27:
 		exit(0);
+		break;
+	case 'x':
+		Xangle += 5.0;
+		if (Xangle > 360.0) Xangle -= 360.0;
+		glutPostRedisplay();
+		break;
+	case 'X':
+		Xangle -= 5.0;
+		if (Xangle < 0.0) Xangle += 360.0;
+		glutPostRedisplay();
+		break;
+	case 'y':
+		Yangle += 5.0;
+		if (Yangle > 360.0) Yangle -= 360.0;
+		glutPostRedisplay();
+		break;
+	case 'Y':
+		Yangle -= 5.0;
+		if (Yangle < 0.0) Yangle += 360.0;
+		glutPostRedisplay();
+		break;
+	case 'z':
+		Zangle += 5.0;
+		if (Zangle > 360.0) Zangle -= 360.0;
+		glutPostRedisplay();
+		break;
+	case 'Z':
+		Zangle -= 5.0;
+		if (Zangle < 0.0) Zangle += 360.0;
+		glutPostRedisplay();
 		break;
 	default:
 		break;
