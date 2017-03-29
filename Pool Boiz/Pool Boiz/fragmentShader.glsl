@@ -6,10 +6,9 @@
 uniform uint object;
 uniform vec4 hemColor, playAreaColour;
 
-out vec4 colorsOut;
+out vec4 colourOut;
 
 void main(void)
 {
-   if (object == HEMISPHERE) colorsOut = hemColor; 
-   if (object == PLAYAREA) colorsOut = PlayAreaColour;
+	colourOut = vec4(1,0,0,1); 
 }
