@@ -9,7 +9,7 @@ public:
 	glm::vec3 acceleration;
 	GameObject();
 	~GameObject();
-	void update();
-	void render();
+	virtual void update();
+	virtual void render();
 };
 

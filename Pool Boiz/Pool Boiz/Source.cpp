@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <vector>
 #  include <GL/glew.h>
 #  include <GL/freeglut.h>
 #  include <GL/glext.h>
@@ -9,7 +10,8 @@
 #include"Ball.h"
 #include"World.h"
 #include"Camera.h"
-#include <vector>
+#include"Table.h"
+#include"Ball.h"
 
 #include "glm\common.hpp"
 #include <glm/glm.hpp>
@@ -23,6 +25,8 @@
 #define SIDES 2
 
 Camera camera;
+Table table;
+Ball PLZ;
 
 static unsigned int stripIndices[] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 1 };
 static unsigned int
@@ -120,46 +124,9 @@ char* readTextFile(char* aTextFile)
 	return content;
 }
 
-void drawScene(void)
+void spehere()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
-	
-	// Calculate and update modelview matrix.
-	//this is where we would translate e.g camera
-	//modelViewMat = glm::mat4(1.0);
-	//modelViewMat = glm::rotate(modelViewMat, Zangle, glm::vec3(0.0, 0.0, 1.0));
-	//modelViewMat = glm::rotate(modelViewMat, Yangle, glm::vec3(0.0, 1.0, 0.0));
-	//modelViewMat = glm::rotate(modelViewMat, Xangle, glm::vec3(1.0, 0.0, 0.0));
-	//glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, value_ptr(modelViewMat));
 
-	//glUniform1ui(objectLoc, ANUS); // Update object name.
-	//glBindVertexArray(vao[ANUS]);
-	//glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
-
-	//glUniform1ui(objectLoc, PLAYAREA); // Update object name.
-	//glBindVertexArray(vao[PLAYAREA]);
-	//glMultiDrawElements(GL_TRIANGLE_STRIP, torCounts, GL_UNSIGNED_INT,0,4);
-
-	//glBindVertexArray(vao[SIDES]);
-	//glDrawElements(GL_TRIANGLE_STRIP, 10, GL_UNSIGNED_INT, 0);
-	 
-
-
-	glm::mat4 projMat = glm::perspective(70.0, 1.0, 0.1, 1000.0);
-	glm::mat4 viewMat = glm::lookAt(glm::vec3(0, 1, -4), glm::vec3(0), glm::vec3(0, 1, 0));
-	glm::mat4 modelMat = glm::mat4(1);
-
-	glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, value_ptr(projMat));
-	glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, value_ptr(viewMat));
-	glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, value_ptr(modelMat));
-	
-	glBindVertexArray(vao[ANUS]);
-	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
-
-
-
-	glFlush();
-	glutSwapBuffers();
 }
 
 GLuint CreateShader(char* vertShadPath,char* fragShadPath ) 
@@ -190,133 +157,36 @@ void setup(void)
 	modelMatLoc = glGetUniformLocation(programId, "modelMat");
 	projMatLoc = glGetUniformLocation(programId, "projMat");
 	viewMatLoc = glGetUniformLocation(programId, "viewMat");
-/*	// Create shader program executable.
-	char* vertexShader = readTextFile("vertexShader.glsl");
-	vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShaderId, 1, (const char**)&vertexShader, NULL);
-	glCompileShader(vertexShaderId);
-
-	char* fragmentShader = readTextFile("fragmentShader.glsl");
-	fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShaderId, 1, (const char**)&fragmentShader, NULL);
-	glCompileShader(fragmentShaderId);
-
-	programId = glCreateProgram();
-	glAttachShader(programId, vertexShaderId);
-	glAttachShader(programId, fragmentShaderId);
-	glLinkProgram(programId);
-	glUseProgram(programId);
-	///////////////////////////////////////
-*/
 	glGenVertexArrays(3, vao);
 	
-
-	{
-		GLuint this_vao;
-		glGenVertexArrays(1, &this_vao);
-		glBindVertexArray(this_vao);
-
-
-		float verts[]{
-			0.0f, 0.0f, 0.0f,
-			1.0f, 0.0f, 0.0f,
-			1.0f, 1.0f, 0.0f,
-			0.0f, 1.0f, 0.0f,
-		};
-		float colours[]{
-			1,0,0,1,
-			0,1,0,1,
-			0,0,1,1,
-			0,0,0,0
-		};
-
-		unsigned int inds[]
-		{
-			1,0,2,3
-		};
-
-		//Vertex vbo
-		{
-			GLuint vbo;
-			glGenBuffers(1, &vbo);
-			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(verts) * sizeof(float), &verts[0], GL_STATIC_DRAW);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
-			glEnableVertexAttribArray(0);
-		}
-		//Vertex colours
-		{
-			GLuint vbo;
-			glGenBuffers(1, &vbo);
-			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(colours) * sizeof(float), &colours[0], GL_STATIC_DRAW);
-			glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-			glEnableVertexAttribArray(1);
-		}
-		//Index vbo
-		{
-			GLuint vbo;
-			glGenBuffers(1, &vbo);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(inds) * sizeof(unsigned int), &inds[0], GL_STATIC_DRAW);
-		}
-
-
-		glBindVertexArray(0);
-
-		vao[ANUS] = this_vao;
-	}
-
-	/*
-	// BEGIN bind VAO id vao[ANNULUS] to the set of vertex array calls following.
-	glBindVertexArray(vao[ANUS]);
-	glGenBuffers(2, buffer); // Generate buffer ids.
-	glBindBuffer(GL_ARRAY_BUFFER, buffer[VERTICES]);// Bind vertex buffer and reserve space.
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertexs), Vertexs, GL_STATIC_DRAW);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[INDICES]);// Bind and fill indices buffer to tell gpu the order of which to draw
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(stripIndices), stripIndices, GL_STATIC_DRAW);	
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertexs[0]), 0);// Specify vertex pointers to the start of the respective data.
-	glEnableVertexAttribArray(0);
-	// END bind VAO id vao[ANNULUS].
-
-	// BEGIN bind VAO id vao[trin] to the set of vertex array calls following
-	glBindVertexArray(vao[PLAYAREA]);
-	glGenBuffers(2, buffer); // Generate buffer ids
-	glBindBuffer(GL_ARRAY_BUFFER, buffer[VERTICES]);// Bind vertex buffer and
-	glBufferData(GL_ARRAY_BUFFER, sizeof(playAreaVert) * sizeof(float), playAreaVert, GL_STATIC_DRAW);//reserve space
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[INDICES]);// Bind and fill indices buffer.
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(stripIndices), stripIndices, GL_STATIC_DRAW);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(playAreaVert[0]), 0);
-	glEnableVertexAttribArray(1);
-	// END bind VAO id vao[tRIN].
-
-	// BEGIN bind VAO id vao[sides] to the set of vertex array calls following
-	glBindVertexArray(vao[SIDES]);
-	glGenBuffers(2, buffer); // Generate buffer ids
-	glEnableClientState(GL_VERTEX_ARRAY);// Enable two vertex arrays: co-ordinates and color
-	glEnableClientState(GL_COLOR_ARRAY);
-	glBindBuffer(GL_ARRAY_BUFFER, buffer[VERTICES]);// Bind vertex buffer and
-	glBufferData(GL_ARRAY_BUFFER, sizeof(sidesVert) + sizeof(sidesVert), NULL, GL_STATIC_DRAW);//reserve space
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(sidesVert), sidesVert);// Copy vertex coordinates data into first half of vertex buffer.
-	glBufferSubData(GL_ARRAY_BUFFER, sizeof(sidesVert), sizeof(sidesColors), sidesColors);// Copy vertex color data into second half of vertex buffer.
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[INDICES]);// Bind and fill indices buffer.
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(stripIndices), stripIndices, GL_STATIC_DRAW);
-	glVertexPointer(3, GL_FLOAT, 0, 0);// Specify vertex and color pointers to the start of the respective data.
-	glColorPointer(3, GL_FLOAT, 0, (GLvoid*)(sizeof(sidesVert)));
-	// END bind VAO id vao[sides].
-	*/
-
-
-	// Obtain color uniform locations and set values.
-//	anusColorLoc = glGetUniformLocation(programId, "hemColor");
-//	glUniform4fv(hemColorLoc, 1, &hemColors[0]);
+	
+	vao[PLAYAREA] = PLZ.MakeVao();
+	PLZ.calc();
+	vao[ANUS] = table.MakeVao();
 	playColorLoc = glGetUniformLocation(programId, "PlayAreaColour");
 	glUniform4fv(playColorLoc, 1, &playAreaColours[0]);
 
 
+}
+
+void drawScene(void)
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	glm::mat4 projMat = glm::perspective(70.0, 1.0, 0.1, 1000.0);
+	glm::mat4 viewMat = glm::lookAt(glm::vec3(0, 2, -6), glm::vec3(0), glm::vec3(0, 1, 0));
+	glm::mat4 modelMat = glm::mat4(1);
+
+	glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, value_ptr(projMat));
+	glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, value_ptr(viewMat));
+	glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, value_ptr(modelMat));
+
+	glBindVertexArray(vao[ANUS]);
+	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
 
 
-
+	glFlush();
+	glutSwapBuffers();
 }
 
 void resize(int w, int h)
