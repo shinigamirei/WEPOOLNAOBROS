@@ -159,9 +159,9 @@ void setup(void)
 	viewMatLoc = glGetUniformLocation(programId, "viewMat");
 	glGenVertexArrays(3, vao);
 	
-	
-	vao[PLAYAREA] = PLZ.MakeVao();
 	PLZ.calc();
+	vao[PLAYAREA] = PLZ.MakeVao();
+	
 	vao[ANUS] = table.MakeVao();
 	playColorLoc = glGetUniformLocation(programId, "PlayAreaColour");
 	glUniform4fv(playColorLoc, 1, &playAreaColours[0]);
@@ -183,7 +183,8 @@ void drawScene(void)
 
 	glBindVertexArray(vao[ANUS]);
 	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
-
+	glBindVertexArray(vao[PLAYAREA]);
+	glDrawElements(GL_TRIANGLE_STRIP, PLZ.indicesCount, GL_UNSIGNED_INT, 0);
 
 	glFlush();
 	glutSwapBuffers();

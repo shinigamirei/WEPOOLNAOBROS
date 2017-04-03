@@ -13,6 +13,7 @@ public:
 	float Radius;
 	std::vector<float> vertices;
 	std::vector<float> indices;
+	int indicesCount;
 	std::vector<float> colours;
 	Ball();
 	~Ball();
