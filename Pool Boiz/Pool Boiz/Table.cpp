@@ -22,10 +22,10 @@ GLuint Table::MakeVao()
 
 
 		float verts[]{
-			0.0f, 0.0f, 0.0f,
-			1.0f, 0.0f, 0.0f,
-			1.0f, 1.0f, 0.0f,
-			0.0f, 1.0f, 0.0f,
+			-16.5,-1.0,-33.0,
+			16.5,-1.0,-33.0,
+			-16.5,-1.0,33.0,
+			16.5,-1.0,33.0
 		};
 /*	float colours[]{
 			1,0,0,1,
@@ -36,7 +36,7 @@ GLuint Table::MakeVao()
 
 		unsigned int inds[]
 		{
-			1,0,2,3
+			0,1,2,3
 		};
 
 		//Vertex vbo

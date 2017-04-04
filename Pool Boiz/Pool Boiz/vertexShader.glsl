@@ -12,6 +12,6 @@ out vec4 passColour;
 
 void main(void)
 {   
-	passColour = vec4(0.0,1.0,1.0,1.0);
+	passColour = Colours;
    gl_Position = projMat * viewMat * modelMat * vec4(Coords, 1.0);
 }

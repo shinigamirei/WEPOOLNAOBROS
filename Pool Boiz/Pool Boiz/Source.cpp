@@ -174,7 +174,7 @@ void drawScene(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glm::mat4 projMat = glm::perspective(70.0, 1.0, 0.1, 1000.0);
-	glm::mat4 viewMat = glm::lookAt(glm::vec3(0, 2, -6), glm::vec3(0), glm::vec3(0, 1, 0));
+	glm::mat4 viewMat = glm::lookAt(glm::vec3(0, 5, -10), glm::vec3(0), glm::vec3(0, 1, 0));
 	glm::mat4 modelMat = glm::mat4(1);
 
 	glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, value_ptr(projMat));
@@ -183,8 +183,12 @@ void drawScene(void)
 
 	glBindVertexArray(vao[ANUS]);
 	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
+
+	
+	glm::translate(modelMat,PLZ.Position);
+	glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
 	glBindVertexArray(vao[PLAYAREA]);
-	glDrawElements(GL_TRIANGLE_STRIP, PLZ.indicesCount, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLE_STRIP, 15, GL_UNSIGNED_INT, 0);
 
 	glFlush();
 	glutSwapBuffers();
@@ -239,6 +243,9 @@ void keyInput(unsigned char key, int x, int y)
 
 void GamLEP()
 {
+
+	PLZ.Position.z += 1.0;
+
 /*	camera.CameraUpdate();
 	glm::mat4 view;
 	view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f),
