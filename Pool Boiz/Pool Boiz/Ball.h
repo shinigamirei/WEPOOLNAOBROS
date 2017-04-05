@@ -18,6 +18,7 @@ public:
 	Ball();
 	~Ball();
 	void calc();
+	void update();
 	GLuint MakeVao();
 };
 

@@ -44,12 +44,6 @@ static glm::mat4 modelViewMat = glm::mat4(1.0);
 static glm::mat4 projMat = glm::mat4(1.0);
 static float Xangle = 0.0, Yangle = 0.0, Zangle = 0.0; // Angles to rotate scene.
 
-static int torCounts[4];
-
-//66*33
-//72*36
-//edge
-
 float Vertexs[] = //on eye level atm
 {
 	-18.0,0.0,-36.0,
@@ -124,11 +118,6 @@ char* readTextFile(char* aTextFile)
 	return content;
 }
 
-void spehere()
-{
-
-}
-
 GLuint CreateShader(char* vertShadPath,char* fragShadPath ) 
 {
 	char* vertexShader = readTextFile(vertShadPath);
@@ -163,6 +152,7 @@ void setup(void)
 	vao[PLAYAREA] = PLZ.MakeVao();
 	
 	vao[ANUS] = table.MakeVao();
+	vao[SIDES] = table.MakeSidesVao();
 	playColorLoc = glGetUniformLocation(programId, "PlayAreaColour");
 	glUniform4fv(playColorLoc, 1, &playAreaColours[0]);
 
@@ -174,7 +164,7 @@ void drawScene(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glm::mat4 projMat = glm::perspective(70.0, 1.0, 0.1, 1000.0);
-	glm::mat4 viewMat = glm::lookAt(glm::vec3(0, 5, -10), glm::vec3(0), glm::vec3(0, 1, 0));
+	glm::mat4 viewMat = glm::lookAt(glm::vec3(0, 10, -40), glm::vec3(0), glm::vec3(0, 1, 0));
 	glm::mat4 modelMat = glm::mat4(1);
 
 	glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, value_ptr(projMat));
@@ -183,12 +173,14 @@ void drawScene(void)
 
 	glBindVertexArray(vao[ANUS]);
 	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(vao[SIDES]);
+	glDrawElements(GL_TRIANGLE_STRIP, 19, GL_UNSIGNED_INT, 0);
 
-	
-	glm::translate(modelMat,PLZ.Position);
+	modelMat = glm::translate(modelMat, glm::vec3(PLZ.Position));
 	glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+
 	glBindVertexArray(vao[PLAYAREA]);
-	glDrawElements(GL_TRIANGLE_STRIP, 15, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLE_STRIP, 24, GL_UNSIGNED_INT, 0);
 
 	glFlush();
 	glutSwapBuffers();
@@ -245,7 +237,7 @@ void GamLEP()
 {
 
 	PLZ.Position.z += 1.0;
-
+	glutPostRedisplay();
 /*	camera.CameraUpdate();
 	glm::mat4 view;
 	view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f),

@@ -11,5 +11,6 @@ public:
 	Table();
 	~Table();
 	GLuint MakeVao();
+	GLuint MakeSidesVao();
 };
 
