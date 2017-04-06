@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CueBall.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Table.cpp" />
@@ -125,6 +126,7 @@
   <ItemGroup>
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CueBall.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="World.h" />

@@ -16,7 +16,7 @@ Ball::Ball()
 	longs = 6;
 	radius = 3.0;
 	indicesCount = 0;
-	velocity = glm::vec3{0,0,2};
+	velocity = glm::vec3{0.5,0,1};
 
 	for (int i = 0; i < lats; i++)
 	{
@@ -70,6 +70,7 @@ void Ball::calc()
 void Ball::update()
 {
 	position += velocity;
+	sideCollision();
 }
 
 GLuint Ball::MakeVao()
@@ -169,14 +170,14 @@ GLuint Ball::MakeVao()
 			glEnableVertexAttribArray(0);
 		}
 		//Vertex colours
-/*		{
+		{
 			GLuint vbo;
 			glGenBuffers(1, &vbo);
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(colours) * sizeof(float), &colours[0], GL_STATIC_DRAW);
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 			glEnableVertexAttribArray(1);
-		}*/
+		}
 		//Index vbo
 		{
 			unsigned int indicesSize = indices.size() * sizeof(unsigned int);
@@ -192,5 +193,22 @@ GLuint Ball::MakeVao()
 
 void Ball::sideCollision()
 {
+	if (position.x > 19)
+		velocity.x *= -1;
+	else if (position.x < -19)
+		velocity.x *= -1;
+	else if (position.z > 39)
+		velocity.z *= -1;
+	else if (position.z < -39)
+		velocity.z *= -1;
+}
 
+void Ball::draw(unsigned int modelMatLoc, unsigned int vao[],int num)
+{
+	glm::mat4 modelMat(1);
+	modelMat = glm::translate(modelMat, glm::vec3(position));
+	glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+
+	glBindVertexArray(vao[num]);
+	glDrawElements(GL_TRIANGLE_STRIP, 24, GL_UNSIGNED_INT, 0);
 }

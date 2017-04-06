@@ -21,5 +21,6 @@ public:
 	void update();
 	GLuint MakeVao();
 	void sideCollision();
+	void draw(unsigned int, unsigned int[],int);
 };
 
