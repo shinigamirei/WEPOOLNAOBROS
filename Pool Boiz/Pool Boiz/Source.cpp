@@ -12,11 +12,13 @@
 #include"Camera.h"
 #include"Table.h"
 #include"Ball.h"
+#include"CueBall.h"
 
 #include "glm\common.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm\gtx\rotate_vector.hpp>
 
 #define VERTICES 0
 #define INDICES 1
@@ -27,6 +29,7 @@
 Camera camera;
 Table table;
 Ball PLZ;
+CueBall player;
 
 static unsigned int stripIndices[] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 1 };
 static unsigned int
@@ -38,13 +41,8 @@ objectLoc,
 anusColorLoc,
 playColorLoc,
 buffer[2],
-vao[3];
+vao[4];
 
-static glm::mat4 modelViewMat = glm::mat4(1.0);
-static glm::mat4 projMat = glm::mat4(1.0);
-static float Xangle = 0.0, Yangle = 0.0, Zangle = 0.0; // Angles to rotate scene.
-
-static glm::vec4 playAreaColours = { 0.0,1.0,0.0,1.0 };
 
 // Function to read text file.
 char* readTextFile(char* aTextFile)
@@ -93,22 +91,22 @@ void setup(void)
 	viewMatLoc = glGetUniformLocation(programId, "viewMat");
 	glGenVertexArrays(4, vao);
 	
-	PLZ.calc();
+	vao[4] = player.MakeVao();
+
 	vao[PLAYAREA] = PLZ.MakeVao();
 	
 	vao[ANUS] = table.MakeVao();
 	vao[SIDES] = table.MakeSidesVao();
-	playColorLoc = glGetUniformLocation(programId, "PlayAreaColour");
-	glUniform4fv(playColorLoc, 1, &playAreaColours[0]);
+
 
 }
 
 void drawScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glm::mat4 projMat = glm::perspective(70.0, 1.0, 0.1, 1000.0);
-	glm::mat4 viewMat = glm::lookAt(glm::vec3(0, 100, 1), glm::vec3(0), glm::vec3(0, 1, 0));
+	glm::mat4 viewMat = glm::lookAt(glm::vec3(0, 10, 1), glm::vec3(0), glm::vec3(0, 1, 0));
 	glm::mat4 modelMat = glm::mat4(1);
 
 	glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, value_ptr(projMat));
@@ -116,10 +114,11 @@ void drawScene(void)
 	glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, value_ptr(modelMat));
 
 	table.render(modelMatLoc, vao, ANUS, 12);
-	
+	player.render(modelMatLoc, vao, 4, 24);
 
-	PLZ.render(modelMatLoc, vao, PLAYAREA, 24);
+	PLZ.render(modelMatLoc, vao, PLAYAREA, 12);
 	table.render(modelMatLoc, vao, SIDES, 10);
+
 	glFlush();
 	glutSwapBuffers();
 }
@@ -136,38 +135,23 @@ void keyInput(unsigned char key, int x, int y)
 	case 27:
 		exit(0);
 		break;
-	case 'x':
-		Xangle += 5.0;
-		if (Xangle > 360.0) Xangle -= 360.0;
-		glutPostRedisplay();
+	case 'q':
+		player.hit();
 		break;
-	case 'X':
-		Xangle -= 5.0;
-		if (Xangle < 0.0) Xangle += 360.0;
-		glutPostRedisplay();
+	case 'a':
+		player.heading = glm::rotateY(player.heading, glm::radians(5.0f));
 		break;
-	case 'y':
-		Yangle += 5.0;
-		if (Yangle > 360.0) Yangle -= 360.0;
-		glutPostRedisplay();
+	case 'd':
+		player.heading = glm::rotateY(player.heading, glm::radians(-5.0f));
 		break;
-	case 'Y':
-		Yangle -= 5.0;
-		if (Yangle < 0.0) Yangle += 360.0;
-		glutPostRedisplay();
+	case 'w':
+		player.force += 0.1;
+		if (player.force > 1) player.force = 1;
 		break;
-	case 'z':
-		Zangle += 5.0;
-		if (Zangle > 360.0) Zangle -= 360.0;
-		glutPostRedisplay();
+	case's':
+		player.force -= 0.1;
+		if (player.force < 0) player.force = 0;
 		break;
-	case 'Z':
-		Zangle -= 5.0;
-		if (Zangle < 0.0) Zangle += 360.0;
-		glutPostRedisplay();
-		break;	
-	case ' ':
-
 	default:
 		break;
 	}
@@ -175,20 +159,9 @@ void keyInput(unsigned char key, int x, int y)
 
 void GamLEP()
 {
-
 	PLZ.update();
+	player.update();
 	glutPostRedisplay();
-/*	camera.CameraUpdate();
-	glm::mat4 view;
-	view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f),
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f));
-
-	GLfloat radius = 10.0f;
-	GLfloat camX = sin(glutGet(GLUT_ELAPSED_TIME)) * radius;
-	GLfloat camZ = cos(glutGet(GLUT_ELAPSED_TIME)) * radius;
-	view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
-	*/
 }
 
 int main(int argc, char **argv)

@@ -11,7 +11,7 @@ public:
 	int lats;
 	int longs;
 	float radius;
-	std::vector<float> vertices;
+	std::vector<glm::vec3> vertices;
 	std::vector<float> indices;
 	int indicesCount;
 	std::vector<float> colours;
@@ -21,6 +21,5 @@ public:
 	void update();
 	GLuint MakeVao();
 	void sideCollision();
-	void draw(unsigned int, unsigned int[],int);
 };
 
