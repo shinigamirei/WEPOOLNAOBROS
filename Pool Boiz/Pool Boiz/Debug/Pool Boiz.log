@@ -1,5 +1,6 @@
-﻿  Source.cpp
-c:\users\cookj12\desktop\github\wepoolnaobros\pool boiz\pool boiz\source.cpp(148): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\cookj12\desktop\github\wepoolnaobros\pool boiz\pool boiz\source.cpp(152): warning C4305: '-=': truncation from 'double' to 'float'
-  Pool Boiz.vcxproj -> C:\Users\cookj12\Desktop\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.exe
-  Pool Boiz.vcxproj -> C:\Users\cookj12\Desktop\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.pdb (Partial PDB)
+﻿  Ball.cpp
+c:\users\jonathan\documents\github\wepoolnaobros\pool boiz\pool boiz\ball.cpp(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\jonathan\documents\github\wepoolnaobros\pool boiz\pool boiz\ball.cpp(82): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\jonathan\documents\github\wepoolnaobros\pool boiz\pool boiz\ball.cpp(143): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Pool Boiz.vcxproj -> C:\Users\jonathan\Documents\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.exe
+  Pool Boiz.vcxproj -> C:\Users\jonathan\Documents\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.pdb (Partial PDB)

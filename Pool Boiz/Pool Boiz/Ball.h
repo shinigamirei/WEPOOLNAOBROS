@@ -10,16 +10,16 @@ class Ball :
 public:
 	int lats;
 	int longs;
+	int indicesCount;
 	float radius;
 	std::vector<glm::vec3> vertices;
-	std::vector<float> indices;
-	int indicesCount;
-	std::vector<float> colours;
+	std::vector<GLuint> indices;
+	glm::vec4 colour;
 	Ball();
 	~Ball();
-	void calc();
-	void update();
+	void Update();
 	GLuint MakeVao();
-	void sideCollision();
+	void SideCollision();
+	void BallCollision(GameObject a);
 };
 

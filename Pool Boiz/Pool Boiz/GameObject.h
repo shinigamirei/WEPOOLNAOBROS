@@ -10,7 +10,7 @@ public:
 	glm::vec3 heading;
 	GameObject();
 	~GameObject();
-	virtual void update();
+	virtual void Update();
 	virtual void render(unsigned int, unsigned int[], int ,int);
 };
 

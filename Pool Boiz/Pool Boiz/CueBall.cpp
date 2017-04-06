@@ -16,5 +16,5 @@ CueBall::~CueBall()
 
 void CueBall::hit()
 {
-	velocity = (glm::vec3{1,1,1} * force * heading);
+	velocity += (glm::vec3{1,1,1} * force * heading);
 }

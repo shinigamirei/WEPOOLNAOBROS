@@ -10,3 +10,8 @@ World::World()
 World::~World()
 {
 }
+
+void World::GenerateBalls() 
+{
+
+}
