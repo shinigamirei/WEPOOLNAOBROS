@@ -8,15 +8,15 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
+#define PI 3.14159265
 Ball::Ball()
 {
 	lats = 6;
 	longs = 6;
-	Radius = 3.0;
-	Position = glm::vec3(0.0, 0.0, 0.0);
+	radius = 3.0;
 	indicesCount = 0;
-	for (int i = 0; i < lats; i++)
+
+/*	for (int i = 0; i < lats; i++)
 	{
 
 		float V = i / (float)lats;
@@ -50,7 +50,7 @@ Ball::Ball()
 		std::cout << indices[i]<<std::endl;
 
 		indicesCount += 2;
-	}
+	}*/
 }
 
 
@@ -65,7 +65,7 @@ void Ball::calc()
 
 void Ball::update()
 {
-
+	position += velocity;
 }
 
 GLuint Ball::MakeVao()
@@ -127,4 +127,61 @@ GLuint Ball::MakeVao()
 		glBindVertexArray(0);
 		return (this_vao);
 	}
+}
+
+// Fill the vertex array with co-ordinates of the sample points.
+void Ball::fillHemVertexArray(glm::vec4 hemVertices[(HEM_LONGS + 1) * (HEM_LATS + 1)])
+{
+	int i, j, k;
+
+	k = 0;
+	for (j = 0; j <= lats; j++)
+		for (i = 0; i <= longs; i++)
+		{
+			hemVertices[k].x = radius * cos((float)j / lats * PI / 2.0) * cos(2.0 * (float)i / longs * PI);
+			hemVertices[k].y = radius * sin((float)j / lats * PI / 2.0);
+			hemVertices[k].z = radius * cos((float)j / lats * PI / 2.0) * sin(2.0 * (float)i / longs * PI);
+			hemVertices[k].w = 1.0;
+			k++;
+		}
+}
+
+// Fill the array of index arrays.
+void Ball::fillHemIndices(unsigned int hemIndices[HEM_LATS][2 * (HEM_LONGS + 1)])
+{
+	int i, j;
+	for (j = 0; j < HEM_LATS; j++)
+	{
+		for (i = 0; i <= HEM_LONGS; i++)
+		{
+			hemIndices[j][2 * i] = (j + 1)*(HEM_LONGS + 1) + i;
+			hemIndices[j][2 * i + 1] = j*(HEM_LONGS + 1) + i;
+		}
+	}
+}
+
+// Fill the array of counts.
+void Ball::fillHemCounts(int hemCounts[HEM_LATS])
+{
+	int j;
+	for (j = 0; j < HEM_LATS; j++) hemCounts[j] = 2 * (HEM_LONGS + 1);
+}
+
+// Fill the array of buffer offsets.
+void Ball::fillHemOffsets(void* hemOffsets[HEM_LATS])
+{
+	int j;
+	for (j = 0; j < HEM_LATS; j++) hemOffsets[j] = (GLvoid*)(2 * (HEM_LONGS + 1)*j * sizeof(unsigned int));
+}
+
+// Initialize the hemisphere.
+void Ball::fillHemisphere(glm::vec4 hemVertices[(HEM_LONGS + 1) * (HEM_LATS + 1)],
+	unsigned int hemIndices[HEM_LATS][2 * (HEM_LONGS + 1)],
+	int hemCounts[HEM_LATS],
+	void* hemOffsets[HEM_LATS])
+{
+	fillHemVertexArray(hemVertices);
+	fillHemIndices(hemIndices);
+	fillHemCounts(hemCounts);
+	fillHemOffsets(hemOffsets);
 }

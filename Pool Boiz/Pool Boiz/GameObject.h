@@ -4,7 +4,7 @@
 class GameObject
 {
 public:
-	glm::vec3 Position;
+	glm::vec3 position;
 	glm::vec3 velocity;
 	glm::vec3 acceleration;
 	GameObject();

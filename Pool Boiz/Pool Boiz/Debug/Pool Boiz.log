@@ -1,3 +1,6 @@
-﻿  Source.cpp
+﻿  Ball.cpp
+c:\users\jonathan\documents\github\wepoolnaobros\pool boiz\pool boiz\ball.cpp(141): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\jonathan\documents\github\wepoolnaobros\pool boiz\pool boiz\ball.cpp(142): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\jonathan\documents\github\wepoolnaobros\pool boiz\pool boiz\ball.cpp(143): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Pool Boiz.vcxproj -> C:\Users\jonathan\Documents\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.exe
   Pool Boiz.vcxproj -> C:\Users\jonathan\Documents\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.pdb (Partial PDB)
