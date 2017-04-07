@@ -14,12 +14,12 @@ public:
 	float radius;
 	std::vector<glm::vec3> vertices;
 	std::vector<GLuint> indices;
-	glm::vec4 colour;
+	std::vector<glm::vec4> colours;
 	Ball();
 	~Ball();
 	void Update();
 	GLuint MakeVao();
 	void SideCollision();
-	void BallCollision(GameObject a);
+	void BallCollision(GameObject &a);
 };
 

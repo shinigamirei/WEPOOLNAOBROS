@@ -4,7 +4,8 @@
 class World
 {
 public:
-	std::vector<GameObject> balls;
+	std::vector<GameObject> redBalls;
+	std::vector<GameObject> yellowBalls;
 	std::vector<glm::vec3> ballLocations;
 	World();
 	~World();

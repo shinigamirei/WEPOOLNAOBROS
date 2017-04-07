@@ -18,7 +18,6 @@ Ball::Ball()
 	radius = 1.5;
 	indicesCount = 0;
 	velocity = glm::vec3{0,0,0};
-	colour = glm::vec4(1, 1, 1, 1);
 
 	for (int i = 0; i < lats; i++)
 	{
@@ -46,6 +45,8 @@ Ball::Ball()
 		indices.push_back(i + longs);
 		indices.push_back(i + longs+ 1);
 		indicesCount += 4;
+
+		
 	}
 }
 
@@ -70,6 +71,11 @@ void Ball::Update()
 
 GLuint Ball::MakeVao()
 {
+	for (int i = 0; i < lats; i++)
+	{
+		for (int j = 0; j <= longs; ++j)
+			colours.push_back(colour);
+	}
 	{
 		GLuint this_vao;
 		glGenVertexArrays(1, &this_vao);
@@ -91,9 +97,10 @@ GLuint Ball::MakeVao()
 		//Vertex colours
 		{
 			GLuint vbo;
+			float size = colours.size() * sizeof(glm::vec4);
 			glGenBuffers(1, &vbo);
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-			glBufferData(GL_ARRAY_BUFFER,sizeof(glm::vec4),&colour, GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER,size,colours.data(), GL_STATIC_DRAW);
 			glVertexAttribPointer(1,4,GL_FLOAT,GL_FALSE,0,NULL);
 			glEnableVertexAttribArray(1);
 		}
@@ -138,7 +145,7 @@ void Ball::SideCollision()
 	}
 }
 
-void Ball::BallCollision(GameObject a)
+void Ball::BallCollision(GameObject &a)
 {
 	int distance = sqrtf(((position.x - a.position.x) * (position.x - a.position.x))+((position.z - a.position.z) * (position.z - a.position.z)));
 	if (distance < radius *2)

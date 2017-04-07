@@ -1,6 +1,207 @@
-﻿  Ball.cpp
-c:\users\jonathan\documents\github\wepoolnaobros\pool boiz\pool boiz\ball.cpp(42): warning C4018: '<': signed/unsigned mismatch
-c:\users\jonathan\documents\github\wepoolnaobros\pool boiz\pool boiz\ball.cpp(82): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-c:\users\jonathan\documents\github\wepoolnaobros\pool boiz\pool boiz\ball.cpp(143): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  Pool Boiz.vcxproj -> C:\Users\jonathan\Documents\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.exe
-  Pool Boiz.vcxproj -> C:\Users\jonathan\Documents\GitHub\WEPOOLNAOBROS\Pool Boiz\Debug\Pool Boiz.pdb (Partial PDB)
+﻿  Source.cpp
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\assert.h(14): error C2059: syntax error: 'string'
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\assert.h(14): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x2.hpp(41): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x2.hpp(42): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x2.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x2.inl(33): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat2x2.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat2x2.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x3.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x3.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x3.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x3.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat2x3.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat2x3.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x4.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x4.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x4.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x4.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat2x4.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat2x4.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x2.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x2.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x2.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x2.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat3x2.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat3x2.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x3.hpp(41): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x3.hpp(42): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x3.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x3.inl(33): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat3x3.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat3x3.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x4.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x4.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x4.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x4.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat3x4.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat3x4.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x2.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x2.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x2.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x2.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat4x2.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat4x2.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x3.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x3.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x3.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x3.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat4x3.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat4x3.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x4.hpp(41): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x4.hpp(42): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x4.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x4.inl(33): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat4x4.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat4x4.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_trigonometric.hpp(49): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_trigonometric.hpp(50): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_trigonometric.inl(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_trigonometric.inl(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_exponential.hpp(48): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_exponential.hpp(49): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\assert.h(14): error C2059: syntax error: 'string'
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\assert.h(14): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_exponential.inl(39): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_exponential.inl(39): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_packing.hpp(46): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_packing.hpp(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_half.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_half.hpp(37): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_half.inl(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_half.inl(37): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_packing.inl(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_packing.inl(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_geometric.hpp(44): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_geometric.hpp(45): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_geometric.inl(39): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_geometric.inl(39): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_matrix.hpp(63): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_matrix.hpp(63): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_matrix.inl(36): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_matrix.inl(36): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_integer.hpp(49): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_integer.hpp(50): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_integer.inl(46): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_integer.inl(46): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\constants.hpp(52): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\constants.hpp(53): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\constants.inl(35): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\constants.inl(36): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\matrix_transform.hpp(63): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\matrix_transform.hpp(64): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\matrix_transform.inl(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\matrix_transform.inl(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\quaternion.hpp(57): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\quaternion.hpp(58): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\quaternion.inl(38): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\quaternion.inl(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\type_ptr.hpp(85): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\type_ptr.hpp(86): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\type_ptr.inl(35): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\type_ptr.inl(35): fatal error C1003: error count exceeds 100; stopping compilation
+  Cue.cpp
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\assert.h(14): error C2059: syntax error: 'string'
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\assert.h(14): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x2.hpp(41): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x2.hpp(42): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x2.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x2.inl(33): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat2x2.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat2x2.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x3.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x3.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x3.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x3.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat2x3.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat2x3.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x4.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x4.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x4.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat2x4.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat2x4.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat2x4.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x2.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x2.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x2.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x2.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat3x2.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat3x2.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x3.hpp(41): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x3.hpp(42): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x3.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x3.inl(33): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat3x3.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat3x3.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x4.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x4.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x4.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat3x4.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat3x4.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat3x4.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x2.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x2.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x2.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x2.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat4x2.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat4x2.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x3.hpp(42): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x3.hpp(43): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x3.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x3.inl(34): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat4x3.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat4x3.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x4.hpp(41): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x4.hpp(42): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x4.inl(33): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_mat4x4.inl(33): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\mat4x4.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\mat4x4.hpp(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_trigonometric.hpp(49): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_trigonometric.hpp(50): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_trigonometric.inl(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_trigonometric.inl(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_exponential.hpp(48): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_exponential.hpp(49): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\assert.h(14): error C2059: syntax error: 'string'
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\assert.h(14): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_exponential.inl(39): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_exponential.inl(39): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_packing.hpp(46): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_packing.hpp(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_half.hpp(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_half.hpp(37): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\type_half.inl(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\type_half.inl(37): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_packing.inl(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_packing.inl(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_geometric.hpp(44): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_geometric.hpp(45): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_geometric.inl(39): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_geometric.inl(39): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_matrix.hpp(63): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_matrix.hpp(63): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_matrix.inl(36): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_matrix.inl(36): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_integer.hpp(49): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_integer.hpp(50): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\detail\func_integer.inl(46): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\detail\func_integer.inl(46): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\constants.hpp(52): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\constants.hpp(53): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\constants.inl(35): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\constants.inl(36): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\matrix_transform.hpp(63): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\matrix_transform.hpp(64): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\matrix_transform.inl(37): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\matrix_transform.inl(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\quaternion.hpp(57): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\quaternion.hpp(58): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\quaternion.inl(38): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\quaternion.inl(38): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\type_ptr.hpp(85): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\type_ptr.hpp(86): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\opengl\glm-0.9.6.3\glm\gtc\type_ptr.inl(35): error C2059: syntax error: 'namespace'
+c:\opengl\glm-0.9.6.3\glm\gtc\type_ptr.inl(35): fatal error C1003: error count exceeds 100; stopping compilation
+  Generating Code...

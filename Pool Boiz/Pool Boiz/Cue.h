@@ -20,5 +20,4 @@ public:
 	Cue();
 	~Cue();
 	GLuint MakeVao();
-};
 

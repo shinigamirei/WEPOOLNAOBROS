@@ -12,6 +12,7 @@
 #include"Table.h"
 #include"Ball.h"
 #include"CueBall.h"
+#include"Cue.h"
 
 #include "glm\common.hpp"
 #include <glm/glm.hpp>
@@ -19,14 +20,26 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm\gtx\rotate_vector.hpp>
 
-#define ANUS 0
-#define PLAYAREA 1
-#define SIDES 2
-
 World world;
 Table table;
-Ball PLZ;
 CueBall player;
+Ball ball1;
+Ball ball2;
+Ball ball3;
+Ball ball4;
+Ball ball5;
+Ball ball6;
+Ball ball7;
+Ball ball8;
+Ball ball9;
+Ball ball10;
+Ball ball11;
+Ball ball12;
+Ball ball13;
+Ball ball14;
+Ball ball15;
+Cue cue;
+
 
 static unsigned int stripIndices[] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 1 };
 static unsigned int
@@ -38,7 +51,7 @@ objectLoc,
 anusColorLoc,
 playColorLoc,
 buffer[2],
-vao[4];
+vao[19];
 
 
 // Function to read text file.
@@ -86,15 +99,77 @@ void setup(void)
 	modelMatLoc = glGetUniformLocation(programId, "modelMat");
 	projMatLoc = glGetUniformLocation(programId, "projMat");
 	viewMatLoc = glGetUniformLocation(programId, "viewMat");
-	glGenVertexArrays(4, vao);
-	
-	player.colour = glm::vec4(1);
-	vao[4] = player.MakeVao();
 
-	vao[PLAYAREA] = PLZ.MakeVao();
+	world.redBalls.push_back(ball1);
+	world.redBalls.push_back(ball2);
+	world.redBalls.push_back(ball3);
+	world.redBalls.push_back(ball4);
+	world.redBalls.push_back(ball5);
+	world.redBalls.push_back(ball6);
+	world.redBalls.push_back(ball7);
+	world.yellowBalls.push_back(ball9);
+	world.yellowBalls.push_back(ball10);
+	world.yellowBalls.push_back(ball11);
+	world.yellowBalls.push_back(ball12);
+	world.yellowBalls.push_back(ball13);
+	world.yellowBalls.push_back(ball14);
+	world.yellowBalls.push_back(ball15);
 	
-	vao[ANUS] = table.MakeVao();
-	vao[SIDES] = table.MakeSidesVao();
+	ball1.position = glm::vec3(0, 0, -20);
+	ball2.position = glm::vec3(-2, 0, -22.5);
+	ball3.position = glm::vec3(4, 0, -25);
+	ball4.position = glm::vec3(-6, 0, -27.5);
+	ball5.position = glm::vec3(-2, 0, -27.5);
+	ball6.position = glm::vec3(8, 0, -30);
+	ball7.position = glm::vec3(4, 0, -30);
+	ball8.position = glm::vec3(0, 0, -25);
+	ball9.position = glm::vec3(2, 0, -22.5);
+	ball10.position = glm::vec3(-4, 0, -25);
+	ball11.position = glm::vec3(2, 0, -27.5);
+	ball12.position = glm::vec3(6, 0, -27.5);
+	ball13.position = glm::vec3(-8, 0, -30);
+	ball14.position = glm::vec3(-4, 0, -30);
+	ball15.position = glm::vec3(0, 0, -30);
+
+	ball1.colour = glm::vec4(1, 0, 0, 1);
+	ball2.colour = glm::vec4(1, 0, 0, 1);
+	ball3.colour = glm::vec4(1, 0, 0, 1);
+	ball4.colour = glm::vec4(1, 0, 0, 1);
+	ball5.colour = glm::vec4(1, 0, 0, 1);
+	ball6.colour = glm::vec4(1, 0, 0, 1);
+	ball7.colour = glm::vec4(1, 0, 0, 1);
+	ball9.colour = glm::vec4(1, 1, 0, 1);
+	ball10.colour = glm::vec4(1, 1, 0, 1);
+	ball11.colour = glm::vec4(1, 1, 0, 1);
+	ball12.colour = glm::vec4(1, 1, 0, 1);
+	ball13.colour = glm::vec4(1, 1, 0, 1);
+	ball14.colour = glm::vec4(1, 1, 0, 1);
+	ball15.colour = glm::vec4(1, 1, 0, 1);
+
+
+	glGenVertexArrays(19, vao);
+
+	vao[2] = player.MakeVao();
+	vao[3] = ball1.MakeVao();
+	vao[4] = ball2.MakeVao();
+	vao[5] = ball3.MakeVao();
+	vao[6] = ball4.MakeVao();
+	vao[7] = ball5.MakeVao();
+	vao[8] = ball6.MakeVao();
+	vao[9] = ball7.MakeVao();
+	vao[10] = ball8.MakeVao();
+	vao[11] = ball9.MakeVao();
+	vao[12] = ball10.MakeVao();
+	vao[13] = ball11.MakeVao();
+	vao[14] = ball12.MakeVao();
+	vao[15] = ball13.MakeVao();
+	vao[16] = ball14.MakeVao();
+	vao[17] = ball15.MakeVao();
+
+	vao[18] = cue.MakeVao();
+
+	vao[0] = table.MakeVao();
+	vao[1] = table.MakeSidesVao();
 
 
 }
@@ -112,12 +187,27 @@ void drawScene(void)
 	glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, value_ptr(modelMat));
 
 
-	table.render(modelMatLoc, vao, ANUS, 12);
-	player.render(modelMatLoc, vao, 4,player.indicesCount);
+	table.render(modelMatLoc, vao, 0, 12);
+	player.render(modelMatLoc, vao, 2,player.indicesCount);
+	ball1.render(modelMatLoc, vao, 3, player.indicesCount);
+	ball2.render(modelMatLoc, vao, 4, player.indicesCount);
+	ball3.render(modelMatLoc, vao, 5, player.indicesCount);
+	ball4.render(modelMatLoc, vao, 6, player.indicesCount);
+	ball5.render(modelMatLoc, vao, 7, player.indicesCount);
+	ball6.render(modelMatLoc, vao, 8, player.indicesCount);
+	ball7.render(modelMatLoc, vao, 9, player.indicesCount);
+	ball8.render(modelMatLoc, vao, 10, player.indicesCount);
+	ball9.render(modelMatLoc, vao, 11, player.indicesCount);
+	ball10.render(modelMatLoc, vao, 12, player.indicesCount);
+	ball11.render(modelMatLoc, vao, 13, player.indicesCount);
+	ball12.render(modelMatLoc, vao, 14, player.indicesCount);
+	ball13.render(modelMatLoc, vao, 15, player.indicesCount);
+	ball14.render(modelMatLoc, vao, 16, player.indicesCount);
+	ball15.render(modelMatLoc, vao, 17, player.indicesCount);
 
-	PLZ.render(modelMatLoc, vao, PLAYAREA, PLZ.indicesCount);
-	table.render(modelMatLoc, vao, SIDES, 10);
-
+	table.render(modelMatLoc, vao, 1, 10);
+	
+	cue.render(modelMatLoc, vao, 18, cue.indicesCount);
 	glFlush();
 	glutSwapBuffers();
 }
@@ -159,9 +249,12 @@ void keyInput(unsigned char key, int x, int y)
 
 void GamLEP()
 {
-	PLZ.Update();
+	for each (GameObject i in world.redBalls)
+		i.Update();
+	for each (GameObject i in world.yellowBalls)
+		i.Update();
 	player.Update();
-	player.BallCollision(PLZ);
+	player.BallCollision(ball1);
 	glutPostRedisplay();
 }
 
